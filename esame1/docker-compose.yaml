@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app: 
+    image: exam1:v1.0.0
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 100M
+        reservations:
+          memory: 50M
+    logging: 
+      driver: "json-file"
+      options:
+        max-size: "3m"
+        max-file: "1"
+    ports: 
+      - 8080:80
+
+
+         
+      

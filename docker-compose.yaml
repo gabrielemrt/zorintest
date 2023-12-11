@@ -1,19 +1,22 @@
-version: "3"
-
+version: '3'
 services:
-  mkdocs-app:
-    image: docesame:1.0.0
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
     deploy:
-      replicas: 1
-      resources:
-        limits:
-          memory: 100M
-        reservations:
-          memory: 50M
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      mode: global
+    volumes:
+      - /PATH_TO_YOUR_CONFIG:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: always
+    privileged: true
+    network_mode: host
     ports:
-      - "80:80"
+      - 8123:8123
+
+
+      # docker swarm init
+      ###manager docker swarm join --token SWMTKN-1-0cp0oa4r0fi1hho4cuiq6mqkffbybxifvd9b4f1zdwt3v1y7un-4930hxtikoi5oz7p63zxecra0 172.16.20.180:2377
+      ###worker  docker swarm join --token SWMTKN-1-0cp0oa4r0fi1hho4cuiq6mqkffbybxifvd9b4f1zdwt3v1y7un-4930hxtikoi5oz7p63zxecra0 
+      # docker stack deploy -c docker-compose.yaml HA 

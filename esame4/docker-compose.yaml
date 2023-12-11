@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - nw-wp
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+  
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - nw-wp
+
+
+
+
+networks:
+  nw-wp:

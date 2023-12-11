@@ -1,0 +1,18 @@
+{
+    "name": "Mkdocs Dev Container",
+    "dockerFile": "Dockerfile.devcontainer",
+  
+    "extensions": [],
+  
+    "appPort": [80],
+  
+    "runArgs": ["-u", "root"],
+  
+    "settings": {
+      "python.pythonPath": "/usr/local/bin/python",
+      "python.linting.pylintEnabled": false
+    },
+  
+    "postCreateCommand": "git checkout tags/2.0.0"
+  }
+  

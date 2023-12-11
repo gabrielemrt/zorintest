@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  esame2:
+    image: esame2:2.0.0
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV_PORT: ${PORT:-3000}

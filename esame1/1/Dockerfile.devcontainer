@@ -1,0 +1,7 @@
+FROM python:3
+
+WORKDIR /app/doc-custom-app
+
+COPY . /app
+
+RUN git checkout tags/2.0.0
